@@ -3,18 +3,18 @@ package com.jiyoon.kakaopaytask.constant;
 import lombok.Getter;
 
 public enum ApiError {
-	ERROR(0,"¿À·ù"),
-	SEED_ERROR(10, "»Ñ¸®±â ¿À·ù"),
-	RECEIVE_ERROR(20, "¹Þ±â ¿À·ù"),
-	RECEIVE_YOURS(21, "ÀÚ½ÅÀÌ »Ñ¸° °ÇÀº ¹ÞÀ» ¼ö ¾ø½À´Ï´Ù."),
-	RECEIVE_PERIOD_OVER(22, "»Ñ¸°Áö 10ºÐÀÌ Áö³­ °ÇÀº ¹ÞÀ» ¼ö ¾ø½À´Ï´Ù."),
-	NOT_SAME_ROOM_USER(23, "ÇØ´ç »Ñ¸®±â ´ëÈ­¹æ¿¡ ¼ÓÇÏÁö ¾ÊÀº »ç¶÷Àº ¹ÞÀ» ¼ö ¾ø½À´Ï´Ù."),
-	RECEIVE_DUPLICATE(24, "ÀÌ¹Ì ¹ÞÀº »ç¶÷Àº ¹ÞÀ» ¼ö ¾ø½À´Ï´Ù."),
-	RECEIVE_FINISH(25, "¸ðµç ¹Þ±â°¡ ¿Ï·áµÈ °ÇÀÔ´Ï´Ù."),
-	SEARCH_ERROR(30, "Á¶È¸ ¿À·ù"),
-	INVALID_TOKEN(31, "À¯È¿ÇÏÁö ¾ÊÀº token ÀÔ´Ï´Ù."),
-	NOT_YOUR_SEED(32, "ÀÚ½ÅÀÌ »Ñ¸° °ÇÀÌ ¾Æ´Ï¶ó¼­ Á¶È¸ÇÒ ¼ö ¾ø½À´Ï´Ù."),
-	INQUIRY_PERIOD_OVER(33, "»Ñ¸°Áö 7ÀÏÀÌ Áö³­ °ÇÀº Á¶È¸ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+	ERROR(0,"ì˜¤ë¥˜"),
+	SEED_ERROR(10, "ë¿Œë¦¬ê¸° ì˜¤ë¥˜"),
+	RECEIVE_ERROR(20, "ë°›ê¸° ì˜¤ë¥˜"),
+	RECEIVE_YOURS(21, "ìžì‹ ì´ ë¿Œë¦° ê±´ì€ ë°›ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤."),
+	RECEIVE_PERIOD_OVER(22, "ë¿Œë¦°ì§€ 10ë¶„ì´ ì§€ë‚œ ê±´ì€ ë°›ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤."),
+	NOT_SAME_ROOM_USER(23, "í•´ë‹¹ ë¿Œë¦¬ê¸° ëŒ€í™”ë°©ì— ì†í•˜ì§€ ì•Šì€ ì‚¬ëžŒì€ ë°›ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤."),
+	RECEIVE_DUPLICATE(24, "ì´ë¯¸ ë°›ì€ ì‚¬ëžŒì€ ë°›ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤."),
+	RECEIVE_FINISH(25, "ëª¨ë“  ë°›ê¸°ê°€ ì™„ë£Œëœ ê±´ìž…ë‹ˆë‹¤."),
+	SEARCH_ERROR(30, "ì¡°íšŒ ì˜¤ë¥˜"),
+	INVALID_TOKEN(31, "ìœ íš¨í•˜ì§€ ì•Šì€ token ìž…ë‹ˆë‹¤."),
+	NOT_YOUR_SEED(32, "ìžì‹ ì´ ë¿Œë¦° ê±´ì´ ì•„ë‹ˆë¼ì„œ ì¡°íšŒí•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤."),
+	INQUIRY_PERIOD_OVER(33, "ë¿Œë¦°ì§€ 7ì¼ì´ ì§€ë‚œ ê±´ì€ ì¡°íšŒí•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 	
 	@Getter
 	private final int code;
