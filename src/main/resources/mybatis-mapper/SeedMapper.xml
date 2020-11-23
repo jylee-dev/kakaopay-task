@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiyoon.kakaopaytask.mapper.SeedMapper">
+	
+	<select id="selectSeedByToken" resultType="Seed"> 
+		SELECT *
+		  FROM seed
+		 WHERE token = #{token}
+	</select>
+	
+	<insert id="insertSeed" parameterType="Seed">
+		INSERT INTO seed (token, amount, cnt, user_id, room_id, reg_date)
+		VALUES (#{token}, #{amount}, #{cnt}, #{userId}, #{roomId}, sysdate)
+    </insert> 
+
+</mapper>
