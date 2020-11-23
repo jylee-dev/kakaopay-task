@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jiyoon.kakaopaytask.constant.ApiError;
 import com.jiyoon.kakaopaytask.exception.ApiException;
 import com.jiyoon.kakaopaytask.model.SuccessResponse;
 import com.jiyoon.kakaopaytask.service.ReceiveService;
@@ -28,7 +27,7 @@ public class MainController {
 	@Autowired
 	SearchService searchService;
 	
-	// [Ä«Ä«¿ÀÆäÀÌ »Ñ¸®±â ±â´É1] »Ñ¸®±â
+	// [ì¹´ì¹´ì˜¤í˜ì´ ë¿Œë¦¬ê¸° ê¸°ëŠ¥1] ë¿Œë¦¬ê¸°
 	@RequestMapping(value = "/seed/{amount}/{cnt}", method = RequestMethod.POST)
 	public ResponseEntity<SuccessResponse> seed(
 			@RequestHeader(value = "X-USER-ID") int userId, 
@@ -39,7 +38,7 @@ public class MainController {
 		return new ResponseEntity<SuccessResponse>(seedService.Seed(amount, cnt, userId, roomId), responseHeaders, HttpStatus.OK);
 	}
 	
-	// [Ä«Ä«¿ÀÆäÀÌ »Ñ¸®±â ±â´É2] ¹Ş±â
+	// [ì¹´ì¹´ì˜¤í˜ì´ ë¿Œë¦¬ê¸° ê¸°ëŠ¥2] ë°›ê¸°
 	@RequestMapping(value = "/receive/{token}", method = RequestMethod.PUT)
 	public ResponseEntity<SuccessResponse> receive(
 			@RequestHeader(value = "X-USER-ID") int userId, 
@@ -48,7 +47,7 @@ public class MainController {
 		return new ResponseEntity<SuccessResponse>(receiveService.receive(token, userId), responseHeaders, HttpStatus.OK);
 	}
 	
-	// [Ä«Ä«¿ÀÆäÀÌ »Ñ¸®±â ±â´É3] Á¶È¸
+	// [ì¹´ì¹´ì˜¤í˜ì´ ë¿Œë¦¬ê¸° ê¸°ëŠ¥3] ì¡°íšŒ
 	@RequestMapping(value = "/list/{token}", method = RequestMethod.GET)
 	public ResponseEntity<SuccessResponse> search(
 			@RequestHeader(value = "X-USER-ID") int userId, 
