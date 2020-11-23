@@ -23,6 +23,7 @@
 - Mybatis
 - H2 Database
 - Lombok
+- JUnit
 ## 빌드 및 실행
 - Git, Java는 설치되어 있다고 가정
   ```
