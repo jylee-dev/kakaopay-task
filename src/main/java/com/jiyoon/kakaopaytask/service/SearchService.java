@@ -26,32 +26,26 @@ public class SearchService {
 	@Autowired
 	ComService comService;	
 			
-	// [카카오페이 뿌리기 기능3] 조회
-	public SuccessResponse search (String token, int userId) throws ApiException {		
-		// 해당 뿌리기 정보 가져오기	
+	public SuccessResponse search (String token, int userId) throws ApiException {
 		Seed seed = seedMapper.selectSeedByToken(token);	
 		
-		// 유효하지 않은 token일 경우 조회 불가
 		if (seed == null) {
 			throw new ApiException(ApiError.INVALID_TOKEN);
 		}
-			
-		// 뿌린 사람이 자신이 아닌 경우 조회 불가
+		
 		if (!seed.getUserId().equals(userId)) {
 			throw new ApiException(ApiError.NOT_YOUR_SEED);			
 		}
 		
-		// 뿌린 후 7일이 지난 경우 조회 불가
 		if (comService.getPeriod(seed.getRegDate(), "d") > 7) {
 			throw new ApiException(ApiError.INQUIRY_PERIOD_OVER);
 		}
 		
-		try {
-			// 받기 완료된 정보 가져오기
+		try {		
 			ArrayList<Object> receivedList = new ArrayList<Object>();
 			int sum = 0;			
 			for (Receive receive : receiveMappser.selectReceiveListByToken(token)) {
-				if (receive.getUserId() != null) { // 받기 완료된 분배건
+				if (receive.getUserId() != null) {
 					HashMap<String, Object> m = new HashMap<>();			
 					m.put("amount", receive.getAmount());
 					m.put("receivedUser", receive.getUserId());
@@ -62,10 +56,10 @@ public class SearchService {
 			
 			// response data
 			HashMap<String, Object> data = new HashMap<>();
-			data.put("time", seed.getRegDate()); // 뿌린 시각
-			data.put("total amount", seed.getAmount()); // 뿌린 금액
-			data.put("received amount", sum); // 받기 완료된 금액
-			data.put("receive info", receivedList); // 받기 완료된 정보List
+			data.put("time", seed.getRegDate());
+			data.put("total amount", seed.getAmount());
+			data.put("received amount", sum);
+			data.put("receive info", receivedList);
 			
 			// response
 			SuccessResponse sResponse = new SuccessResponse();					

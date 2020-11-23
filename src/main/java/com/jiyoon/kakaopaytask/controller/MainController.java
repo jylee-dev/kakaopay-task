@@ -27,7 +27,6 @@ public class MainController {
 	@Autowired
 	SearchService searchService;
 	
-	// [카카오페이 뿌리기 기능1] 뿌리기
 	@RequestMapping(value = "/seed/{amount}/{cnt}", method = RequestMethod.POST)
 	public ResponseEntity<SuccessResponse> seed(
 			@RequestHeader(value = "X-USER-ID") int userId, 
@@ -38,7 +37,6 @@ public class MainController {
 		return new ResponseEntity<SuccessResponse>(seedService.Seed(amount, cnt, userId, roomId), responseHeaders, HttpStatus.OK);
 	}
 	
-	// [카카오페이 뿌리기 기능2] 받기
 	@RequestMapping(value = "/receive/{token}", method = RequestMethod.PUT)
 	public ResponseEntity<SuccessResponse> receive(
 			@RequestHeader(value = "X-USER-ID") int userId, 
@@ -47,7 +45,6 @@ public class MainController {
 		return new ResponseEntity<SuccessResponse>(receiveService.receive(token, userId), responseHeaders, HttpStatus.OK);
 	}
 	
-	// [카카오페이 뿌리기 기능3] 조회
 	@RequestMapping(value = "/list/{token}", method = RequestMethod.GET)
 	public ResponseEntity<SuccessResponse> search(
 			@RequestHeader(value = "X-USER-ID") int userId, 

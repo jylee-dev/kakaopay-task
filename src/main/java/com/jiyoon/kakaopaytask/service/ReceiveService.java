@@ -26,42 +26,35 @@ public class ReceiveService {
 	RoomMapper roomMappser;
 	@Autowired
 	ComService comService;
-	
-	// [카카오페이 뿌리기 기능2] 받기
+
 	@Transactional
-	public SuccessResponse receive(String token, int userId) throws ApiException {
-		// 해당 뿌리기 정보 가져오기
+	public SuccessResponse receive(String token, int userId) throws ApiException {		
 		Seed seed = seedMapper.selectSeedByToken(token);
 		
-		// 자신이 뿌린 건일 경우 받기 불가
 		if (userId == seed.getUserId()) {			
 			throw new ApiException(ApiError.RECEIVE_YOURS);
 		}
 		
-		// 뿌린 후 10분이 지났을 경우 받기 불가
 		if (comService.getPeriod(seed.getRegDate(), "m") > 10) {
 			throw new ApiException(ApiError.RECEIVE_PERIOD_OVER);
 		}
 		
-		// 뿌리기가 호출된 대화방에 속한 사용자가 아닌 경우 받기 불가
 		if (!isSameRoomUser(seed.getRoomId(), userId)) {
 			throw new ApiException(ApiError.NOT_SAME_ROOM_USER);
 		}	
-			
-		// 미할당된 분배건 검색 및 할당
-		int receivedAmount = -1; // 받은 금액
+		
+		int receivedAmount = -1;
 		for (Receive receive : receiveMapper.selectReceiveListByToken(token)) {
 			if (receive.getUserId() == null || receive.getUserId().equals(null)) {
-				receive.setUserId(userId);  // 할당 받은 userId 값 세팅
-				receiveMapper.updateUserIdBySeq(receive); // 할당 받은 userId 정보 업데이트
-				receivedAmount = receive.getAmount(); // 받은 금액 저장
+				receive.setUserId(userId);
+				receiveMapper.updateUserIdBySeq(receive);
+				receivedAmount = receive.getAmount();
 				break;
-			} else if (receive.getUserId() == userId) { // 이미  받은 사람일 경우 받기 불가
+			} else if (receive.getUserId() == userId) {
 				throw new ApiException(ApiError.RECEIVE_DUPLICATE);
 			}
 		}
 		
-		// 미할당 건을 찾지 못한 경우 받기 불가 (받기 완료된 뿌리기 건)
 		if (receivedAmount == -1) {
 			throw new ApiException(ApiError.RECEIVE_FINISH);
 		}
@@ -69,7 +62,7 @@ public class ReceiveService {
 		try {
 			// response data
 			HashMap<String, Object> data = new HashMap<>();
-			data.put("received amount", receivedAmount); // 받은 금액
+			data.put("received amount", receivedAmount);
 			
 			// response
 			SuccessResponse sResponse = new SuccessResponse();					
@@ -81,8 +74,7 @@ public class ReceiveService {
 			throw new ApiException(ApiError.RECEIVE_ERROR, e.getLocalizedMessage());
 		}
 	}
-	
-	// 해당 대화방에 사용자가 있는지 확인
+		
 	public boolean isSameRoomUser(String roomId, int userId) {		
 		for (Room room : roomMappser.selectRoomByRoomId(roomId)) {
 			if (room.getUserId().equals(userId)) {

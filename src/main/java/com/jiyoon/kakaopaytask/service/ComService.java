@@ -16,20 +16,20 @@ public class ComService {
 		Date date;
 		try {
 			date = fm.parse(strDate);			
-			Date now = new Date(); // 현재 시각			
+			Date now = new Date();			
 			int div;
 			switch (st) {
 			case "m":
-				div = 1000*60; // 1000밀리초*60초
+				div = 1000*60;
 				break;
 			case "h":
-				div = 1000*60*60; // 1000밀리초*60초*60분
+				div = 1000*60*60;
 				break;
 			case "d":
-				div = 1000*60*60*24; // 1000밀리초*60초*60분*24시간 
+				div = 1000*60*60*24; 
 				break;
 			case "y":
-				div = 1000*60*60*24*365; // 1000밀리초*60초*60분*24시간*365일
+				div = 1000*60*60*24*365;
 				break;
 			default:
 				div = 1;
