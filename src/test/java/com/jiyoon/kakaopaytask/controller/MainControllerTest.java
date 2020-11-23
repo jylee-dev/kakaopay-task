@@ -19,17 +19,17 @@ public class MainControllerTest {
 	@Test
 	@DisplayName("seed API")
 	public void seed() throws Exception {
-		OkHttpClient client = new OkHttpClient().newBuilder().build();
-		MediaType mediaType = MediaType.parse("application/json");
-		RequestBody body = RequestBody.create(mediaType, "");
-		Request request = new Request.Builder()
-				.url("http://localhost:8080/seed/10000/3")
-				.method("POST", body)
-				.addHeader("Content-Type", "application/json")
-				.addHeader("X-USER-ID", "2011001")
-				.addHeader("X-ROOM-ID", "R0001")
-				.build();
-		Response response = client.newCall(request).execute();
+//		OkHttpClient client = new OkHttpClient().newBuilder().build();
+//		MediaType mediaType = MediaType.parse("application/json");
+//		RequestBody body = RequestBody.create(mediaType, "");
+//		Request request = new Request.Builder()
+//				.url("http://localhost:8080/seed/10000/3")
+//				.method("POST", body)
+//				.addHeader("Content-Type", "application/json")
+//				.addHeader("X-USER-ID", "2011001")
+//				.addHeader("X-ROOM-ID", "R0001")
+//				.build();
+//		Response response = client.newCall(request).execute();
 //		log.info("response : {}", response);
 //		log.info("body : {}", response.body().string());
 	}
@@ -38,16 +38,16 @@ public class MainControllerTest {
 	@Test
 	@DisplayName("receive API")
 	public void receive() throws Exception {
-		OkHttpClient client = new OkHttpClient().newBuilder().build();
-		MediaType mediaType = MediaType.parse("application/json");
-		RequestBody body = RequestBody.create(mediaType, "");
-		Request request = new Request.Builder()
-				.url("http://localhost:8080/receive/Aa0")
-				.method("PUT", body)
-				.addHeader("Content-Type", "application/json")
-				.addHeader("X-USER-ID", "2011002")
-				.build();
-		Response response = client.newCall(request).execute();
+//		OkHttpClient client = new OkHttpClient().newBuilder().build();
+//		MediaType mediaType = MediaType.parse("application/json");
+//		RequestBody body = RequestBody.create(mediaType, "");
+//		Request request = new Request.Builder()
+//				.url("http://localhost:8080/receive/Aa0")
+//				.method("PUT", body)
+//				.addHeader("Content-Type", "application/json")
+//				.addHeader("X-USER-ID", "2011002")
+//				.build();
+//		Response response = client.newCall(request).execute();
 //		log.info("response : {}", response);
 //		log.info("body : {}", response.body().string());
 	}
@@ -56,14 +56,14 @@ public class MainControllerTest {
 	@Test
 	@DisplayName("search API")
 	public void search() throws Exception {
-		OkHttpClient client = new OkHttpClient().newBuilder().build();
-		Request request = new Request.Builder()
-				.url("http://localhost:8080/list/Aa0")
-				.method("GET", null)
-				.addHeader("Content-Type", "application/json")
-				.addHeader("X-USER-ID", "2011001")
-				.build();
-		Response response = client.newCall(request).execute();
+//		OkHttpClient client = new OkHttpClient().newBuilder().build();
+//		Request request = new Request.Builder()
+//				.url("http://localhost:8080/list/Aa0")
+//				.method("GET", null)
+//				.addHeader("Content-Type", "application/json")
+//				.addHeader("X-USER-ID", "2011001")
+//				.build();
+//		Response response = client.newCall(request).execute();
 //		log.info("response : {}", response);		
 //		log.info("body : {}", response.body().string());
 	}
